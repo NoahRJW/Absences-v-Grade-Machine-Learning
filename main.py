@@ -33,18 +33,18 @@ def graph():
 
 def training():
     best_score = 0
+    starttime = time.time()
     while best_score < 0.95:
         x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, Y, test_size=0.1)
-
-        model = linear_model.LinearRegression()
-        model.fit(x_train, y_train)
-        accuracy = model.score(x_test, y_test)
+        grph = linear_model.LinearRegression()
+        grph.fit(x_train, y_train)
+        accuracy = grph.score(x_test, y_test)
         print("\nAccuracy: ", accuracy, "%")
         if accuracy > best_score:
             best_score = accuracy
             with open("bestresults.pickle", "wb") as f:
-                pickle.dump(model, f)
-    print(best_score)
+                pickle.dump(grph, f)
+    print(best_score, " in ", str(round(time.time() - starttime, 2)), "seconds")
 
 
 # In sex / gender 0 = female : 1 = male
