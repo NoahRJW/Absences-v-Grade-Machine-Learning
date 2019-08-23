@@ -15,18 +15,18 @@ How to use, you need to get student data in a perferably CSV format, which you c
 make sure you cover the data points the algorithm uses but you can also easily change these this code is free to use 
 for any, I would appreciate credit to parts of the code you usebut it is not required.
 '''
-studentdata = "student-mat.csv"
+studentdata = 'student-mat.csv'
 def graph():
     cmap, norm = from_levels_and_colors([0.0, 0.5, 1.5], ['red', 'blue'])
     fig = pyplot.figure()
     ax = fig.add_subplot(111, projection='3d')
     xd = [data[predict]]
-    yd = [data["semester1"]]
-    zd = [data["absences"]]
+    yd = [data['semester1']]
+    zd = [data['absences']]
     c = data["sex"]
     ax.scatter(xd, yd, zd, c=c, marker='o', cmap=cmap, norm=norm)
     ax.set_xlabel('Final Grade')
-    ax.set_ylabel("Semester 1 Grade")
+    ax.set_ylabel('Semester 1 Grade')
     ax.set_zlabel('Absences')
     pyplot.show()
 
@@ -62,11 +62,11 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(X, Y
 # Only train if you are running first or you want to get new data
 training()
 
-pickle_in = open("bestresults.pickle", "rb")
+pickle_in = open('bestresults.pickle', 'rb')
 model = pickle.load(pickle_in)
 
-print("Co: \n", model.coef_)
-print("Inte: \n", +model.intercept_)
+print('Co: \n', model.coef_)
+print('Inte: \n', +model.intercept_)
 
 predictions = model.predict(x_test).round()
 
